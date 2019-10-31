@@ -6,6 +6,7 @@
 package capadatos;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -16,5 +17,15 @@ public class ClsConexion {
     private Statement tabla;
     private ResultSet ventas;
     
-    
+     public ClsConexion(String dirbase) {
+        try {
+            base = DriverManager.getConnection("jdbc:ucanaccess://" + dirbase);
+            System.out.println("***CONEXIÓN EXITOSA***");
+            tabla = base.createStatement(ResultSet.FETCH_UNKNOWN, ResultSet.TYPE_SCROLL_SENSITIVE);
+
+        } catch (Exception err) {
+            System.out.println("***CONEXIÓN FALLIDA***" + err);
+        }
+
+    }
 }

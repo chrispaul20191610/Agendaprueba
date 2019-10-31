@@ -15,7 +15,7 @@ public class ClsConexion {
     
     private Connection base;
     private Statement tabla;
-    private ResultSet ventas;
+    private ResultSet contactos;
     
      public ClsConexion(String dirbase) {
         try {
@@ -28,4 +28,10 @@ public class ClsConexion {
         }
 
     }
+     
+     public ResultSet _contactos ()
+             
+     {
+         return contactos;
+     }
 }

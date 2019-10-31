@@ -7,6 +7,9 @@ package capainterfaz;
 
 import capadatos.ClsConexion;
 import java.io.File;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -93,6 +96,12 @@ public class ventana extends javax.swing.JFrame {
 
         File f = file.getSelectedFile();
         String basededatos = f.getAbsolutePath();
+        contactos = new ClsConexion (basededatos);
+         try {
+            contactos.consulta("contactos");
+        } catch (SQLException ex) {
+            Logger.getLogger(ventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         
         // TODO add your handling code here:

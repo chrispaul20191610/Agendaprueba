@@ -15,14 +15,14 @@ import java.sql.Statement;
 public class ClsConexion {
     
     private Connection base;
-    private Statement tabla;
+    private Statement tablas;
     private ResultSet contactos;
     
      public ClsConexion(String dirbase) {
         try {
             base = DriverManager.getConnection("jdbc:ucanaccess://" + dirbase);
             System.out.println("***CONEXIÓN EXITOSA***");
-            tabla = base.createStatement(ResultSet.FETCH_UNKNOWN, ResultSet.TYPE_SCROLL_SENSITIVE);
+            tablas = base.createStatement(ResultSet.FETCH_UNKNOWN, ResultSet.TYPE_SCROLL_SENSITIVE);
 
         } catch (Exception err) {
             System.out.println("***CONEXIÓN FALLIDA***" + err);
@@ -41,15 +41,17 @@ public class ClsConexion {
              
      {
          boolean comprobar= false;
-         String comando = "SELECT * FROM "+ _tabla;
+         String comando = " SELECT * FROM "+ _tabla;
          contactos = null;
-         tabla.execute(comando);
-         contactos = tabla.getResultSet();
+         tablas.execute(comando);
+         contactos = tablas.getResultSet();
          if (contactos != null) {
             comprobar = true;
         }
         return comprobar;
      }
+     
+     
      
      
 }

@@ -8,6 +8,7 @@ package capadatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -33,6 +34,21 @@ public class ClsConexion {
              
      {
          return contactos;
+     }
+     
+     
+     public boolean consulta (String _tabla) throws SQLException
+             
+     {
+         boolean comprobar= false;
+         String comando = "SELECT * FROM "+ _tabla;
+         contactos = null;
+         tabla.execute(comando);
+         contactos = tabla.getResultSet();
+         if (contactos != null) {
+            comprobar = true;
+        }
+        return comprobar;
      }
      
      

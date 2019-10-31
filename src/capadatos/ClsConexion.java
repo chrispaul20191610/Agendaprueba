@@ -37,19 +37,17 @@ public class ClsConexion {
      }
      
      
-     public boolean consulta (String _tabla) throws SQLException
-             
-     {
-         boolean comprobar= false;
-         String comando = " SELECT * FROM "+ _tabla;
-         contactos = null;
-         tablas.execute(comando);
-         contactos = tablas.getResultSet();
-         if (contactos != null) {
+    public boolean consulta(String _tabla) throws SQLException {
+        boolean comprobar = false;
+        String comando = " SELECT * FROM " + _tabla;
+        contactos = null;
+        tablas.execute(comando);
+        contactos = tablas.getResultSet();
+        if (contactos != null) {
             comprobar = true;
         }
         return comprobar;
-     }
+    }
      
      
      
